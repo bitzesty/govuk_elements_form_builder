@@ -23,5 +23,16 @@ RSpec.describe GovukElementsFormBuilder::FormBuilder do
     end
   end
 
+  describe '#error_summary' do
+    it 'outputs error full messages' do
+      resource.valid?
+      output = builder.error_summary resource
+      expect(output).to eq '<div class="errors">' +
+        '<ul><li>' +
+        'Name can&#39;t be blank' +
+        '</li></ul>' +
+        '</div>'
+    end
+  end
 
 end
